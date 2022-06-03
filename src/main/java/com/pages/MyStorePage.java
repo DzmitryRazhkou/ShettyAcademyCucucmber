@@ -90,6 +90,21 @@ public class MyStorePage {
         return new DressesPage(driver);
     }
 
+    //    T-SHIRTS:
+
+    private WebElement t_shirtsButton(){
+        By t_shirtsSectionLocator = By.xpath("(//*[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li/a)[3]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(t_shirtsSectionLocator));
+        return driver.findElement(t_shirtsSectionLocator);
+    }
+
+    public TShirtsPage clickOnTShirts(){
+        t_shirtsButton().click();
+        return new TShirtsPage(driver);
+    }
+
+//
+
 
     public int getAmountOfSections(){
         List<String> listOfSections = new ArrayList<>(Arrays.asList(getWomenSection(), getDressesSection(), getTShirtsSection()));

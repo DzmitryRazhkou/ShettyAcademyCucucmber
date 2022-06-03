@@ -77,6 +77,19 @@ public class MyStorePage {
         return new WomenPage(driver);
     }
 
+    //    DRESSES:
+
+    private WebElement dressesButton(){
+        By dressesSectionLocator = By.xpath("(//*[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li/a)[2]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(dressesSectionLocator));
+        return driver.findElement(dressesSectionLocator);
+    }
+
+    public DressesPage clickOnDresses(){
+        dressesButton().click();
+        return new DressesPage(driver);
+    }
+
 
     public int getAmountOfSections(){
         List<String> listOfSections = new ArrayList<>(Arrays.asList(getWomenSection(), getDressesSection(), getTShirtsSection()));

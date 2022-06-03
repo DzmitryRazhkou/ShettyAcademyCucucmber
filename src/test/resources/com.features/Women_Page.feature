@@ -1,4 +1,4 @@
-Feature: WomenPage
+Feature: Women Page
 
   Background:
     Given User is on the My store page

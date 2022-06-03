@@ -39,8 +39,8 @@ public class WomenPageSteps {
 
 //    FILTERING:
 
-    @When("User makes check boxes checked")
-    public void user_makes_check_boxes_checked() throws InterruptedException {
+    @When("User makes check boxes checked on the women page")
+    public void user_makes_check_boxes_checked_on_the_women_page() throws InterruptedException {
         System.out.println(" =====> User sets up the boxes at the women section <=====");
         womenPage.doSorting();
     }
@@ -54,6 +54,40 @@ public class WomenPageSteps {
     public void women_search_result_is(String expList) {
         String actList = womenPage.extractResultString();
         Assert.assertEquals(actList, expList);
+    }
+
+//    SLIDERS:
+
+    @When("User adjusts price using sliders on the women page")
+    public void user_adjusts_price_using_sliders_on_the_women_page() throws InterruptedException {
+        System.out.println(" =====> User adjusts sliders at the women page <=====");
+        womenPage.moveSlider();
+    }
+
+    @Then("Women adjusted result is {string}")
+    public void women_adjusted_result_is(String expResult) {
+        String actResult = womenPage.extractResultString();
+        Assert.assertEquals(actResult, expResult);
+    }
+
+    @Then("Women adjusted search result is {string}")
+    public void women_adjusted_search_result_is(String expOutOf) {
+        String actOutOf = womenPage.getShowingOut();
+        Assert.assertEquals(actOutOf, expOutOf);
+    }
+
+//    SORTING:
+
+    @When("User selects sorting by on the women page")
+    public void user_selects_sorting_by_on_the_women_page() throws InterruptedException {
+        System.out.println(" =====> User makes sorting at the women page <=====");
+        womenPage.selectSort();
+    }
+
+    @Then("Women sorted result is {string}")
+    public void women_sorted_result_is(String expResult) {
+        String actResult = womenPage.extractSortString();
+        Assert.assertEquals(actResult, expResult);
     }
 
 }

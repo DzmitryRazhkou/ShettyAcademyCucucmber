@@ -47,10 +47,14 @@ public class MyStorePage {
     }
 
 
-    public LoginPage clickOnSignInButton() {
-        By signInButtonLocator = By.cssSelector("[title^='Log in to your customer account']");
+    private WebElement getSignInBtn() {
+        By signInButtonLocator = By.cssSelector(".login");
         wait.until(ExpectedConditions.presenceOfElementLocated(signInButtonLocator));
-        driver.findElement(signInButtonLocator);
+        return driver.findElement(signInButtonLocator);
+    }
+
+    public LoginPage clickOnSignIn() {
+        getSignInBtn().click();
         return new LoginPage(driver);
     }
 
@@ -58,7 +62,7 @@ public class MyStorePage {
 
     public List<String> getSections() {
         List<String> listOfSections = new ArrayList<>(Arrays.asList(getWomenSection(), getDressesSection(), getTShirtsSection()));
-        for (String s: listOfSections){
+        for (String s : listOfSections) {
             System.out.println(s);
         }
         return listOfSections;
@@ -66,39 +70,39 @@ public class MyStorePage {
 
     //    WOMEN:
 
-    private WebElement womenButton(){
+    private WebElement womenButton() {
         By womenSectionLocator = By.xpath("//*[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li/a");
         wait.until(ExpectedConditions.visibilityOfElementLocated(womenSectionLocator));
         return driver.findElement(womenSectionLocator);
     }
 
-    public WomenPage clickOnWomen(){
+    public WomenPage clickOnWomen() {
         womenButton().click();
         return new WomenPage(driver);
     }
 
     //    DRESSES:
 
-    private WebElement dressesButton(){
+    private WebElement dressesButton() {
         By dressesSectionLocator = By.xpath("(//*[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li/a)[2]");
         wait.until(ExpectedConditions.visibilityOfElementLocated(dressesSectionLocator));
         return driver.findElement(dressesSectionLocator);
     }
 
-    public DressesPage clickOnDresses(){
+    public DressesPage clickOnDresses() {
         dressesButton().click();
         return new DressesPage(driver);
     }
 
     //    T-SHIRTS:
 
-    private WebElement t_shirtsButton(){
+    private WebElement t_shirtsButton() {
         By t_shirtsSectionLocator = By.xpath("(//*[@class='sf-menu clearfix menu-content sf-js-enabled sf-arrows']/li/a)[3]");
         wait.until(ExpectedConditions.visibilityOfElementLocated(t_shirtsSectionLocator));
         return driver.findElement(t_shirtsSectionLocator);
     }
 
-    public TShirtsPage clickOnTShirts(){
+    public TShirtsPage clickOnTShirts() {
         t_shirtsButton().click();
         return new TShirtsPage(driver);
     }
@@ -106,7 +110,7 @@ public class MyStorePage {
 //
 
 
-    public int getAmountOfSections(){
+    public int getAmountOfSections() {
         List<String> listOfSections = new ArrayList<>(Arrays.asList(getWomenSection(), getDressesSection(), getTShirtsSection()));
         int amountOfSection = listOfSections.size();
         return amountOfSection;
@@ -201,15 +205,13 @@ public class MyStorePage {
         return list;
     }
 
-    public int getAmountOfInfoFooter(){
+    public int getAmountOfInfoFooter() {
         List<String> list = new ArrayList<>(Arrays.asList(getSpecials().getText().trim(), getNewProducts().getText().trim(), getBestSellers().getText().trim(),
                 getOurStores().getText().trim(), getContactUs().getText().trim(), getTermsAndConditionsOfUse().getText().trim(),
                 getAboutUs().getText().trim(), getSitemap().getText().trim()));
         int amountOfInfoFooter = list.size();
         return amountOfInfoFooter;
     }
-
-
 
 
 }

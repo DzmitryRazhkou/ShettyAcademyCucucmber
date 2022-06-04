@@ -42,26 +42,24 @@ public class MyStorePageSteps {
         contactUsPage = myStorePage.clickOnContactUsButton();
     }
 
-    @Then("User navigates on at the Contact us - My Store")
-    public void user_navigates_on_at_the_contact_us_my_store() {
+    @Then("User navigates on at the contact us {string}")
+    public void user_navigates_on_at_the_contact_us (String expContactUsPageTitle) {
         System.out.println(" =====> User navigates on the contact us page <=====");
-        String expTitlePage = ConfigReader.initProp().getProperty("pageTitleContactUs");
-        String actTitlePage = contactUsPage.getContactUsPageTitle();
-        Assert.assertEquals(actTitlePage, expTitlePage);
+        String actContactUsPageTitle = contactUsPage.getContactUsPageTitle();
+        Assert.assertEquals(actContactUsPageTitle, expContactUsPageTitle);
     }
 
     @When("User clicks on the sign in button")
     public void user_clicks_on_the_sign_in_button() {
         System.out.println(" =====> User clicks at the sign in button <=====");
-        loginPage = myStorePage.clickOnSignInButton();
+        loginPage = myStorePage.clickOnSignIn();
     }
 
-    @Then("User navigates on at the Login - My Store")
-    public void user_navigates_on_at_the_login_my_store() {
+    @Then("User navigates on at the login page {string}")
+    public void user_navigates_on_at_the_login_page (String expLoginPageTitle) {
         System.out.println(" =====> User navigates on the sign in page <=====");
-        String expTitlePage = ConfigReader.initProp().getProperty("pageTitleSignIn");
-        String actTitlePage = loginPage.getLoginPageTitle();
-        Assert.assertEquals(actTitlePage, expTitlePage);
+        String actLoginPageTitle = loginPage.getLoginPageTitle();
+        Assert.assertEquals(actLoginPageTitle, expLoginPageTitle);
     }
 
     @Then("User retrieves names of account section")

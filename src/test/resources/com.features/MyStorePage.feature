@@ -8,11 +8,11 @@ Feature: MyStorePage
 
   Scenario: User clicks on the contact us button
     When User clicks on the contact us button
-    Then User navigates on at the Contact us - My Store
+    Then User navigates on at the contact us "Contact us - My Store"
 
   Scenario: User clicks on the sign in button
     When User clicks on the sign in button
-    Then User navigates on at the Login - My Store
+    Then User navigates on at the login page "Login - My Store"
 
   Scenario: User gets name of sections
     Then User retrieves names of account section

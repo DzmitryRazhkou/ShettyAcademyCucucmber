@@ -3,6 +3,7 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -16,7 +17,7 @@ public class LoginPage {
     private By emailId = By.id("email");
     private By passwordId = By.id("passwd");
     private By signInButton = By.id("SubmitLogin");
-    private By forgotPwdLink = By.xpath("//a[contains(text(),'Forgot your password?')]");
+    private By forgotPwdLink = By.cssSelector("[title^='Recover your forgotten password']");
 
 //    2. Constructor of the page class:
 
@@ -33,6 +34,7 @@ public class LoginPage {
 
     public boolean isForgotPwdLinkExist() {
         try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(forgotPwdLink));
             return driver.findElement(forgotPwdLink).isDisplayed();
         } catch (TimeoutException error) {
             return false;

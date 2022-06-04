@@ -33,18 +33,18 @@ public class LoginPageSteps {
         Assert.assertTrue(loginPage.isForgotPwdLinkExist());
     }
 
-    @When("User enters username {string}")
-    public void user_enters_username(String username) {
-        loginPage.enterUserName(username);
-    }
+//    @When("User enters username {string}")
+//    public void user_enters_username(String username) {
+//        loginPage.doLogin();
+//    }
+//
+//    @When("User enters password {string}")
+//    public void user_enters_password(String password) {
+//        loginPage.enterPassword(password);
+//    }
 
-    @When("User enters password {string}")
-    public void user_enters_password(String password) {
-        loginPage.enterPassword(password);
-    }
-
-    @When("User clicks on login button")
-    public void user_clicks_on_login_button() {
-        loginPage.clickOnLogin();
-    }
+//    @When("User clicks on login button")
+//    public void user_clicks_on_login_button() {
+//        loginPage.clickOnLogin();
+//    }
 }

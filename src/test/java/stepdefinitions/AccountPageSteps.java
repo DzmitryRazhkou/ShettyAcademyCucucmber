@@ -23,7 +23,9 @@ public class AccountPageSteps {
         String password = credentialsList.get(0).get("password");  // get(0) - username row, get("password") = 3036057Dr
 
         DriverFactory.getWebDriver().get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        accountPage = loginPage.doLogin(username, password);
+        loginPage.enterEmail(username);
+        loginPage.enterPassword(password);
+        accountPage = loginPage.clickOnLogin();
     }
 
     @Given("User is on Account Page")

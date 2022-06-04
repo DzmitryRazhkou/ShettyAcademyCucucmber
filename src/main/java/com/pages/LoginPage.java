@@ -48,14 +48,14 @@ public class LoginPage {
         return driver.findElement(emailIdLocator);
     }
 
-    public void enterEmail(String email){
+    public void enterEmail(String email) {
         getEmail().clear();
         getEmail().sendKeys(email);
     }
 
 //    2. Password:
 
-    private WebElement getPassword(){
+    private WebElement getPassword() {
         By passwordIdLocator = By.id("passwd");
         wait.until(ExpectedConditions.presenceOfElementLocated(passwordIdLocator));
         return driver.findElement(passwordIdLocator);
@@ -68,7 +68,7 @@ public class LoginPage {
 
 //    3. Sign In Button:
 
-    private WebElement getSignInBtn(){
+    private WebElement getSignInBtn() {
         By signInButtonLocator = By.id("SubmitLogin");
         wait.until(ExpectedConditions.presenceOfElementLocated(signInButtonLocator));
         return driver.findElement(signInButtonLocator);
@@ -79,37 +79,51 @@ public class LoginPage {
         return new AccountPage(driver);
     }
 
+//    Error Form:
+
+    public boolean getErrorForm() {
+        By errorLocator = By.id("SubmitLogin");
+        wait.until(ExpectedConditions.presenceOfElementLocated(errorLocator));
+        try {
+            System.out.println(" =====> Error form is displayed. <===== ");
+            return driver.findElement(errorLocator).isDisplayed();
+        } catch (TimeoutException y) {
+            System.out.println(" =====> Please provide an another locator. <===== ");
+            return false;
+        }
+    }
+
 
 //    CREATE AN ACCOUNT:
 
 //    1. Email Create:
 
-    private WebElement getEmailCreate(){
+    private WebElement getEmailCreate() {
         By getEmailCreateIdLocator = By.id("email_create");
         wait.until(ExpectedConditions.presenceOfElementLocated(getEmailCreateIdLocator));
         return driver.findElement(getEmailCreateIdLocator);
     }
 
-    private void enterEmailCreate(String emailCreate){
+    private void enterEmailCreate(String emailCreate) {
         getEmailCreate().clear();
         getEmailCreate().sendKeys(emailCreate);
     }
 
 //    2. Create An Account Button:
 
-    private WebElement getCreateAccountBtn(){
+    private WebElement getCreateAccountBtn() {
         By getCreateAccountLocator = By.id("SubmitCreate");
         wait.until(ExpectedConditions.presenceOfElementLocated(getCreateAccountLocator));
         return driver.findElement(getCreateAccountLocator);
     }
 
-    private void clickOnCreateAccount(){
+    private void clickOnCreateAccount() {
         getCreateAccountBtn().click();
     }
 
 //    Final Method:
 
-    public void doCreateAAccount(String emailCreateAccount){
+    public void doCreateAccount(String emailCreateAccount) {
         enterEmailCreate(emailCreateAccount);
         clickOnCreateAccount();
     }

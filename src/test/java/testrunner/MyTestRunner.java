@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/com.features/TShirts_Page.feature"},
+        features = {"src/test/resources/com.features/LoginPage.feature"},
 //        tags = "@Smoke",
         glue = {"stepdefinitions", "AppHooks"},
         dryRun = false,

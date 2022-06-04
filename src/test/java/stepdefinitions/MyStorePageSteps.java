@@ -60,7 +60,7 @@ public class MyStorePageSteps {
     public void user_navigates_on_at_the_login_my_store() {
         System.out.println(" =====> User navigates on the sign in page <=====");
         String expTitlePage = ConfigReader.initProp().getProperty("pageTitleSignIn");
-        String actTitlePage = loginPage.getLoginPageTile();
+        String actTitlePage = loginPage.getLoginPageTitle();
         Assert.assertEquals(actTitlePage, expTitlePage);
     }
 

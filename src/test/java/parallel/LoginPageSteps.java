@@ -19,7 +19,7 @@ public class LoginPageSteps {
 
     @When("User gets the title of the page")
     public void user_gets_the_title_of_the_page() {
-        title = loginPage.getLoginPageTile();
+        title = loginPage.getLoginPageTitle();
         System.out.println("Page Tile is: " +title);
     }
 

@@ -28,6 +28,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/com.features/LoginPage.feature"},
 //        tags = "@Smoke",
         glue = {"stepdefinitions", "AppHooks"},
+//        monochrome = true,
         dryRun = false,
         plugin = {"pretty",
         }

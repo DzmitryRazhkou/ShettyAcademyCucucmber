@@ -117,7 +117,7 @@ public class LoginPage {
         return driver.findElement(getCreateAccountLocator);
     }
 
-    private void clickOnCreateAccount() {
+    public void clickOnCreateAccount() {
         getCreateAccountBtn().click();
     }
 

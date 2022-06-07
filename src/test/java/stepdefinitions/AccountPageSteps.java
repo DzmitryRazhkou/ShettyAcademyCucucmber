@@ -14,7 +14,7 @@ import java.util.Map;
 public class AccountPageSteps {
 
     private LoginPage loginPage = new LoginPage(DriverFactory.getWebDriver());
-    private AccountPage accountPage;
+    private AccountPage accountPage = new AccountPage(DriverFactory.getWebDriver());
 
     @Given("User has already logged in to application")
     public void user_has_already_logged_in_to_application(DataTable credentialTable) {

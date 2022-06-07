@@ -3,13 +3,16 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccountPage {
 
     private WebDriver driver;
+    private WebDriverWait wait;
 
 //    1. By Locators:
 
@@ -19,6 +22,7 @@ public class AccountPage {
 
     public AccountPage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
 //    3. Page actions: features (Behavior) of the page the form of methods:

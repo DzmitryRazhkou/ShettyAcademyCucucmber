@@ -3,7 +3,6 @@ package stepdefinitions;
 import com.pages.AccountPage;
 import com.pages.LoginPage;
 import com.pages.MyStorePage;
-import com.pages.WomenPage;
 import com.qa.factory.DriverFactory;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +11,6 @@ import org.junit.Assert;
 public class LoginPageSteps {
 
     private String title;
-
     private LoginPage loginPage = new LoginPage(DriverFactory.getWebDriver());
     private MyStorePage myStorePage = new MyStorePage(DriverFactory.getWebDriver());
     private AccountPage accountPage = new AccountPage(DriverFactory.getWebDriver());
@@ -28,6 +26,7 @@ public class LoginPageSteps {
         title = loginPage.getLoginPageTitle();
         System.out.println("The Page title is: " +title);
     }
+
     @Then("Page title should be {string}")
     public void page_title_should_be(String expTitleName) {
         Assert.assertTrue(title.contains(expTitleName));
@@ -87,7 +86,5 @@ public class LoginPageSteps {
     public void user_clicks_on_the_create_account_button() {
         loginPage.clickOnCreateAccount();
     }
-
-
 
 }

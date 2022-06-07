@@ -2,20 +2,18 @@ package stepdefinitions;
 
 import com.pages.AccountPage;
 import com.pages.LoginCreateAccountPage;
-import com.pages.LoginPage;
-import com.pages.MyStorePage;
 import com.qa.factory.DriverFactory;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class LoginCreateAccountPageSteps {
 
     private LoginCreateAccountPage loginCreateAccountPage = new LoginCreateAccountPage(DriverFactory.getWebDriver());
-    private AccountPage accountPage = new AccountPage(DriverFactory.getWebDriver());
-
 
 
     @When("User enters into the title field")
     public void user_enters_into_the_title_field() {
+        Assert.assertTrue(loginCreateAccountPage.getAuthenticationBreadcrumb());
         System.out.println("User selects a title. ");
         loginCreateAccountPage.getMrMrsRadioBtn().click();
     }
@@ -96,6 +94,7 @@ public class LoginCreateAccountPageSteps {
     @When("User clicks on the register button")
     public void user_clicks_on_the_register_button() {
         System.out.println("User clicks in the register button and navigates at the account page. ");
-        accountPage = loginCreateAccountPage.clickOnRegister();
+        AccountPage accountPage = loginCreateAccountPage.clickOnRegister();
+        accountPage.getAccountPageTitle();
     }
 }

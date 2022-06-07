@@ -127,22 +127,6 @@ public class LoginCreateAccountPage {
 
 //    YOUR ADDRESS:
 
-//    1. First Name:
-
-    public WebElement getFirstNameAddress() {
-        By getFirstNameAddressLocator = By.cssSelector("#firstname:nth-of-type(1)");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(getFirstNameAddressLocator));
-        return driver.findElement(getFirstNameAddressLocator);
-    }
-
-//    2. Last Name:
-
-    public WebElement getLastNameAddress() {
-        By getLastNameAddressLocator = By.cssSelector("#lastname:nth-of-type(1)");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(getLastNameAddressLocator));
-        return driver.findElement(getLastNameAddressLocator);
-    }
-
 //    3. Company:
 
     public WebElement getCompany() {

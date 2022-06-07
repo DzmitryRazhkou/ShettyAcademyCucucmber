@@ -27,6 +27,9 @@ Feature: Create New Account Feature
 
     And User clicks on the register button
     Then User is on Account Page
+
     Examples:
-      | emailCreate                 | firstname | lastname | password      | dayOfDOB | monthOfDOB | yearOfDOB | company        | addressFl         | addressSl | city        | state      | zip   | addInfo       | phone        |
-      | noah_smithgregson@gmail.com | Noah      | Smith    | f_fgh_jkl4566 | 13       | May        | 1985      | Noah Smith LLC | 915 N 15th Street | Z-301     | Los Angeles | California | 90028 | Apartment 305 | (323)7867520 |
+      | emailCreate               | firstname | lastname | password      | dayOfDOB | monthOfDOB | yearOfDOB | company           | addressFl               | addressSl | city         | state        | zip   | addInfo          | phone        |
+      | noah_smithdavid@gmail.com | Noah      | Smith    | f_fgh_jkl4566 | 13       | May        | 1985      | Noah Smith LLC    | 915 N 15th Street       | Z-301     | Los Angeles  | California   | 90028 | Apartment 305    | (323)7867520 |
+      | oliverreyes@gmail.com     | Oliver    | Reyes    | ewbnmiy874    | 25       | December   | 1974      | Reyes Corporation | 985 Market Street       | Unit C    | Philadelphia | Pennsylvania | 19121 | This Residential | (267)3367781 |
+      | lucasevans@gmail.com      | Lucas     | Evans    | 085hdxws      | 3        | June       | 1999      | Evans LLC         | 30th West Cecil B Moore | Z500      | Chicago      | Illinois     | 60007 | Unit B           | (312)7953609 |

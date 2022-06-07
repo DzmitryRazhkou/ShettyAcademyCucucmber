@@ -1,17 +1,18 @@
 Feature: Account Page Feature
 
   Background:
-    Given User has already logged in to application
-      | username               | password  |
-      | dimagadjilla@gmail.com | 3036057Dr |
+    Given User is on the My store page
+    And User clicks on the sign in button
+    When User enters email "dimagadjilla@gmail.com"
+    And User enters password "3036057Dr"
+    And User clicks on the login button
+
 
   Scenario: Account Page Title
-    Given User is on Account Page
     When User gets the title of the page
     Then Page title should be "My account - My Store"
 
   Scenario: Accounts Section Count
-    Given User is on Account Page
     Then User gets account section
 
       |ORDER HISTORY AND DETAILS|

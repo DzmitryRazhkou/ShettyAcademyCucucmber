@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/com.features/AccountPage.feature"},
+        features = {"src/test/resources/com.features/MyCreditSlipsPage.feature"},
 //        tags = "@Smoke",
         glue = {"stepdefinitions", "AppHooks"},
 //        monochrome = true,

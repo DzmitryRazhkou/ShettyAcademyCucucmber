@@ -34,6 +34,14 @@ public class MyStorePageSteps {
         System.out.println("Logo has been displayed");
     }
 
+//    My Store Title Page:
+
+    @Then("Then Page title of my store page should be {string}")
+    public void page_title_of_my_store_page_should_be(String expMyStorePageTitle) {
+        String actAccountPageTitle = myStorePage.getMyStorePageTitle();
+        Assert.assertEquals(expMyStorePageTitle, actAccountPageTitle);
+    }
+
 //    CONTACT US/ SIGN IN:
 
     @When("User clicks on the contact us button")
@@ -58,7 +66,7 @@ public class MyStorePageSteps {
     @Then("User navigates on at the login page {string}")
     public void user_navigates_on_at_the_login_page (String expLoginPageTitle) {
         System.out.println(" =====> User navigates on the sign in page <=====");
-        String actLoginPageTitle = loginPage.getLoginPageTitle();
+        String actLoginPageTitle = loginPage.getMyLoginPageTitle();
         Assert.assertEquals(actLoginPageTitle, expLoginPageTitle);
     }
 

@@ -13,6 +13,7 @@ public class MyCreditSlipsPageSteps {
 
     private MyCreditSlipsPage myCreditSlipsPage = new MyCreditSlipsPage(DriverFactory.getWebDriver());
     private AccountPage accountPage = new AccountPage(DriverFactory.getWebDriver());
+    private MyStorePage myStorePage = new MyStorePage(DriverFactory.getWebDriver());
 
     @When("User clicks on the my credit slips section")
     public void user_clicks_on_the_my_credit_slips_section() {
@@ -37,4 +38,15 @@ public class MyCreditSlipsPageSteps {
         Assert.assertEquals(expMyStorePageTitle, actMyStorePageTitle);
     }
 
+    @When("User clicks on the back to your account button")
+    public void user_clicks_on_the_back_to_your_account_button() {
+        System.out.println("User clicks at the back yo my account button. ");
+        accountPage = myCreditSlipsPage.doClickBackToToYourAccount();
+    }
+
+    @When("User clicks on the home button")
+    public void user_clicks_on_the_home_button() {
+        System.out.println("User clicks at the home button. ");
+        myStorePage = myCreditSlipsPage.doClickHome();
+    }
 }

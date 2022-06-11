@@ -24,7 +24,8 @@ public class LoginPage {
 
 //    ALREADY REGISTERED?
 
-    public String getLoginPageTitle() {
+    public String getMyLoginPageTitle(){
+        System.out.println(" =====> My login page title is: " +driver.getTitle()+ " <===== ");
         return driver.getTitle();
     }
 

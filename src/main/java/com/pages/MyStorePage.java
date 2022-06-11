@@ -37,6 +37,11 @@ public class MyStorePage {
         }
     }
 
+    public String getMyStorePageTitle(){
+        System.out.println(" =====> My store page title is: " +driver.getTitle()+ " <===== ");
+        return driver.getTitle();
+    }
+
     //    CONTACT US | SIGN OUT | USER:
 
     public ContactUsPage clickOnContactUsButton() {

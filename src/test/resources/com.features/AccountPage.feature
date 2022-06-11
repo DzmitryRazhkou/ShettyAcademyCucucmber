@@ -10,7 +10,7 @@ Feature: Account Page Feature
 
   Scenario: Account Page Title
     When User gets the title of the page
-    Then Page title should be "My account - My Store"
+    Then Page title of my account page should be "My account - My Store"
 
   Scenario: Accounts Section Count
     Then User gets account section

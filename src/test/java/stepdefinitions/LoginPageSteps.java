@@ -10,7 +10,6 @@ import org.junit.Assert;
 
 public class LoginPageSteps {
 
-    private String title;
     private LoginPage loginPage = new LoginPage(DriverFactory.getWebDriver());
     private MyStorePage myStorePage = new MyStorePage(DriverFactory.getWebDriver());
     private AccountPage accountPage = new AccountPage(DriverFactory.getWebDriver());
@@ -21,15 +20,10 @@ public class LoginPageSteps {
         loginPage = myStorePage.clickOnSignIn();
     }
 
-    @When("User gets the title of the page")
-    public void user_gets_the_title_of_the_page() {
-        title = loginPage.getLoginPageTitle();
-        System.out.println("The Page title is: " +title);
-    }
-
-    @Then("Page title should be {string}")
-    public void page_title_should_be(String expTitleName) {
-        Assert.assertTrue(title.contains(expTitleName));
+    @Then("Page title of login page should be {string}")
+    public void page_title_of_login_page_should_be(String expLoginPageTitle) {
+        String actLoginPageTitle = loginPage.getMyLoginPageTitle();
+        Assert.assertEquals(expLoginPageTitle, actLoginPageTitle);
     }
 
 //    FORGOT YOUR PASSWORD:

@@ -31,7 +31,13 @@ public class AccountPageSteps {
     @Given("User is on Account Page")
     public void user_is_on_account_page() {
         String title = accountPage.getAccountPageTitle();
-        System.out.println("Account Page Tile is: " +title);
+        System.out.println("Account Page Title is: " +title);
+    }
+
+    @Then("Page title of my account page should be {string}")
+    public void page_title_of_my_account_page_should_be(String expAccountPageTitle) {
+        String actAccountPageTitle = accountPage.getAccountPageTitle();
+        Assert.assertEquals(expAccountPageTitle, actAccountPageTitle);
     }
 
     @Then("User gets account section")

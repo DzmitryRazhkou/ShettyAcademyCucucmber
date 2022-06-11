@@ -29,6 +29,7 @@ public class AccountPage {
 //    3. Page actions: features (Behavior) of the page the form of methods:
 
     public String getAccountPageTitle() {
+        System.out.println(" =====> My account page title is: " +driver.getTitle()+ " <===== ");
         return driver.getTitle();
     }
 

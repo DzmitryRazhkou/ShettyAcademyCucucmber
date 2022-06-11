@@ -15,3 +15,13 @@ Feature: My Credit Slips Page
   Scenario: User wants to get my credit slips message
     When User clicks on the my credit slips section
     Then User can see message "You have not received any credit slips."
+
+  Scenario: User clicks on the back to your account button
+    When User clicks on the my credit slips section
+    And User clicks on the back to your account button
+    Then Page title of my account page should be "My account - My Store"
+
+  Scenario: User clicks on the home button
+    When User clicks on the my credit slips section
+    And User clicks on the home button
+    Then Page title of my store page should be "My Store"

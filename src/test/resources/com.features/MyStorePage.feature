@@ -5,6 +5,7 @@ Feature: MyStorePage
 
   Scenario: User gets logo on the MyStorePage
     Then Logo is displayed
+    And Then Page title of my store page should be "My Store"
 
   Scenario: User clicks on the contact us button
     When User clicks on the contact us button

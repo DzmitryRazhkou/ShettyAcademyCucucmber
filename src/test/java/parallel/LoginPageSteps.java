@@ -17,12 +17,6 @@ public class LoginPageSteps {
         DriverFactory.getWebDriver().get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
     }
 
-    @When("User gets the title of the page")
-    public void user_gets_the_title_of_the_page() {
-        title = loginPage.getLoginPageTitle();
-        System.out.println("Page Tile is: " +title);
-    }
-
     @Then("Page title should be {string}")
     public void page_title_should_be(String expectedTitleName) {
         Assert.assertTrue(title.contains(expectedTitleName));

@@ -5,8 +5,7 @@ Feature: Login Page Feature
     When User clicks on the sign in button
 
   Scenario: Login Page title
-    And User gets the title of the page
-    Then Page title should be "Login - My Store"
+    Then Page title of login page should be "Login - My Store"
 
   Scenario: Forgot Password link
     Then Forgot your password link should be displayed
@@ -15,8 +14,7 @@ Feature: Login Page Feature
     When User enters email "dimagadjilla@gmail.com"
     And User enters password "3036057Dr"
     And User clicks on the login button
-    Then User gets the title of the page
-    And Page title should be "My account - My Store"
+    Then Page title of my account page should be "My account - My Store"
 
   Scenario: Login with incorrect credentials
     When User enters email {gans}
@@ -26,8 +24,7 @@ Feature: Login Page Feature
   Scenario Outline: Create Account with different emails
     When User enters create "<email>"
     And User clicks on the create account button
-    Then User gets the title of the page
-    And Page title should be "Login - My Store"
+    Then Page title of login page should be "Login - My Store"
 
     Examples:
       | email                 |

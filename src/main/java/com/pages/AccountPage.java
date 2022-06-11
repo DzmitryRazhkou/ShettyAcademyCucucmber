@@ -74,18 +74,18 @@ public class AccountPage {
 //        return new MyAddressesPage(driver);
 //    }
 //
-////    Identity:
-//
-//    private WebElement getIdentityLink(){
-//        By identityLocator = By.cssSelector("[title^='Information']");
-//        wait.until(ExpectedConditions.presenceOfElementLocated(identityLocator));
-//        return driver.findElement(identityLocator);
-//    }
-//
-//    public IdentityPage clickOnIdentity(){
-//        getIdentityLink().click();
-//        return new IdentityPage(driver);
-//    }
+//    Identity:
+
+    private WebElement getIdentityLink(){
+        By identityLocator = By.cssSelector("[title^='Information']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(identityLocator));
+        return driver.findElement(identityLocator);
+    }
+
+    public IdentityPage clickOnIdentity(){
+        getIdentityLink().click();
+        return new IdentityPage(driver);
+    }
 //
 ////    My Wishes:
 //

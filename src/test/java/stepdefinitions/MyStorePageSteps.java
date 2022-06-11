@@ -36,7 +36,7 @@ public class MyStorePageSteps {
 
 //    My Store Title Page:
 
-    @Then("Then Page title of my store page should be {string}")
+    @Then("Page title of my store page should be {string}")
     public void page_title_of_my_store_page_should_be(String expMyStorePageTitle) {
         String actAccountPageTitle = myStorePage.getMyStorePageTitle();
         Assert.assertEquals(expMyStorePageTitle, actAccountPageTitle);

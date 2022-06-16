@@ -105,6 +105,11 @@ public class MyAddressesPageSteps {
         myAddressesPage.getZipCode().sendKeys(zip);
     }
 
+    @When("User clicks on the delete button at the addresses page")
+    public void user_clicks_on_the_delete_button_at_the_addresses_page() {
+        myAddressesPage.getDeleteBtn();
+    }
+
     @When("User clicks on the back to your account button at the address page")
     public void user_clicks_on_the_back_to_your_account_button_at_the_address_page() {
         System.out.println("User clicks at the back yo my account button. ");

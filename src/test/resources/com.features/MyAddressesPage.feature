@@ -36,6 +36,10 @@ Feature: My Addresses
     And User clicks on the save button at the addresses page
     Then User navigates at the my addresses page title
 
+  Scenario: User wants to delete address
+    When User clicks on the delete button at the addresses page
+    Then User navigates at the my addresses page title
+
   Scenario: User clicks on the back to your account button
     And User clicks on the back to your account button at the address page
     Then Page title of my account page should be "My account - My Store"

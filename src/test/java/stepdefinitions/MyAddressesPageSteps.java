@@ -81,4 +81,39 @@ public class MyAddressesPageSteps {
         myAddressesPage.getSaveBtn().click();
     }
 
+    @When("User clicks on the add new address button at the addresses page")
+    public void user_clicks_on_the_add_new_address_button_at_the_addresses_page() {
+        myAddressesPage.getAddANewAddressButton().click();
+    }
+
+    @When("User enters city name for creating new address")
+    public void user_enters_city_name_for_creating_new_address() {
+        String city = faker.address().city();
+        myAddressesPage.getCity().clear();
+        myAddressesPage.getCity().sendKeys(city);
+    }
+
+    @When("User selects state name for creating new address")
+    public void user_selects_state_name_for_creating_new_address() {
+        String state = faker.address().state();
+        myAddressesPage.selectStates(state);
+    }
+
+    @When("User enters zipcode for creating new address")
+    public void user_enters_zipcode_for_creating_new_address() {
+        String zip = faker.address().zipCode();
+        myAddressesPage.getZipCode().sendKeys(zip);
+    }
+
+    @When("User clicks on the back to your account button at the address page")
+    public void user_clicks_on_the_back_to_your_account_button_at_the_address_page() {
+        System.out.println("User clicks at the back yo my account button. ");
+        accountPage = myAddressesPage.doClickBackToToYourAccount();
+    }
+
+    @When("User clicks on the home button at the address page")
+    public void user_clicks_on_the_home_button_at_the_address_page() {
+        System.out.println("User clicks at the home button. ");
+        myStorePage = myAddressesPage.doClickHome();
+    }
 }

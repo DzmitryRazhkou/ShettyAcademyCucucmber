@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/com.features/IdentityPage.feature"},
+        features = {"src/test/resources/com.features/MyAddressesPage.feature"},
 //        tags = "@Smoke",
         glue = {"stepdefinitions", "AppHooks"},
 //        monochrome = true,

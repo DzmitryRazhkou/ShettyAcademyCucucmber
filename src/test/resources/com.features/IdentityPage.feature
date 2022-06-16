@@ -6,14 +6,13 @@ Feature: Your Personal Information
     And User enters email "dimagadjilla@gmail.com"
     And User enters password "3036057Dr"
     And User clicks on the login button
+    When User clicks on the my order history and details section
 
   Scenario: User navigates to my identity page
-    When User clicks on the my order history and details section
     Then User navigates at the my identity page title
     And Page title of identity page should be "Identity - My Store"
 
   Scenario: Personal information
-    When User clicks on the my order history and details section
     Then User receives personal data
       | Dzmitry                |
       | Razhkou                |
@@ -21,11 +20,9 @@ Feature: Your Personal Information
       | 28/May/1990            |
 
   Scenario: User clicks on the back to your account button
-    When User clicks on the my order history and details section
     And User clicks on the back to your account button
     Then Page title of my account page should be "My account - My Store"
 
   Scenario: User clicks on the home button
-    When User clicks on the my order history and details section
     And User clicks on the home button
     Then Page title of my store page should be "My Store"

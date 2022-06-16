@@ -60,20 +60,20 @@ public class AccountPage {
         getMyCreditSlipsLink().click();
         return new MyCreditSlipsPage(driver);
     }
-//
-////    My Addresses:
-//
-//    private WebElement getMyAddressesLink(){
-//        By addressesLocator = By.cssSelector("[title^='Addresses']");
-//        wait.until(ExpectedConditions.presenceOfElementLocated(addressesLocator));
-//        return driver.findElement(addressesLocator);
-//    }
-//
-//    public MyAddressesPage clickOnMyAddresses(){
-//        getMyAddressesLink().click();
-//        return new MyAddressesPage(driver);
-//    }
-//
+
+//    My Addresses:
+
+    private WebElement getMyAddressesLink(){
+        By addressesLocator = By.cssSelector("[title^='Addresses']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(addressesLocator));
+        return driver.findElement(addressesLocator);
+    }
+
+    public MyAddressesPage clickOnMyAddresses(){
+        getMyAddressesLink().click();
+        return new MyAddressesPage(driver);
+    }
+
 //    Identity:
 
     private WebElement getIdentityLink(){

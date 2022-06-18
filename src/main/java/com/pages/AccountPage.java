@@ -86,19 +86,19 @@ public class AccountPage {
         getIdentityLink().click();
         return new IdentityPage(driver);
     }
-//
-////    My Wishes:
-//
-//    private WebElement getMyWishesLink(){
-//        By myWishesLocator = By.cssSelector("[title^='My wishlists']");
-//        wait.until(ExpectedConditions.presenceOfElementLocated(myWishesLocator));
-//        return driver.findElement(myWishesLocator);
-//    }
-//
-//    public MyWishesPage clickOnMyWishes(){
-//        getMyWishesLink().click();
-//        return new MyWishesPage(driver);
-//    }
+
+//    My Wishes:
+
+    private WebElement getMyWishesLink(){
+        By myWishesLocator = By.cssSelector("[title^='My wishlists']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(myWishesLocator));
+        return driver.findElement(myWishesLocator);
+    }
+
+    public MyWishesPage clickOnMyWishes(){
+        getMyWishesLink().click();
+        return new MyWishesPage(driver);
+    }
 
 //    Home:
 

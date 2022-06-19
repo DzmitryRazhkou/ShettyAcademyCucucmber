@@ -39,4 +39,25 @@ public class OrderHistoryPageSteps {
         Assert.assertTrue(orderHistoryPage.getOrderReference(orderReference));
     }
 
+    @Then("Date list contains {string}")
+    public void date_list_contains(String date) {
+        Assert.assertTrue(orderHistoryPage.getDate(date));
+    }
+
+    @Then("Total price list contains {string}")
+    public void total_price_list_contains(String totalPrice) {
+        Assert.assertTrue(orderHistoryPage.getTotalPrice(totalPrice));
+    }
+
+    @When("User clicks on the back to your account button at the order history page")
+    public void user_clicks_on_the_back_to_your_account_button_at_the_order_history_page() {
+        System.out.println("User clicks at the back your my account button. ");
+        accountPage = orderHistoryPage.doClickBackToToYourAccount();
+    }
+
+    @When("User clicks on the home button at the order history page")
+    public void user_clicks_on_the_home_button_at_the_order_history_page() {
+        System.out.println("User clicks at the home button. ");
+        myStorePage = orderHistoryPage.doClickHome();
+    }
 }

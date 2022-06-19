@@ -6,7 +6,7 @@ Feature: Your Personal Information
     And User enters email "dimagadjilla@gmail.com"
     And User enters password "3036057Dr"
     And User clicks on the login button
-    When User clicks on the my order history and details section
+    When User clicks on the my personal information section
 
   Scenario: User navigates to my identity page
     Then User navigates at the my identity page title

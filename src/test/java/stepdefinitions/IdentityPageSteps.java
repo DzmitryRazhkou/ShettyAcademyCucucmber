@@ -18,8 +18,8 @@ public class IdentityPageSteps {
     private AccountPage accountPage = new AccountPage(DriverFactory.getWebDriver());
     private MyStorePage myStorePage = new MyStorePage(DriverFactory.getWebDriver());
 
-    @When("User clicks on the my order history and details section")
-    public void user_clicks_on_the_my_order_history_and_details_section() {
+    @When("User clicks on the my personal information section")
+    public void user_clicks_on_the_my_personal_information_section() {
         System.out.println("User clicks on the my order history and details section. ");
         identityPage = accountPage.clickOnIdentity();
     }

@@ -104,13 +104,13 @@ public class MyWishesPage {
 
 //    CREATE NEW WISH LIST:
 
-    private WebElement getWishlistField() {
+    public WebElement getWishlistField() {
         By getWishlistFieldLocator = By.id("name");
         wait.until(ExpectedConditions.presenceOfElementLocated(getWishlistFieldLocator));
         return driver.findElement(getWishlistFieldLocator);
     }
 
-    private WebElement getSubmitWishlistBtn() {
+    public WebElement getSubmitWishlistBtn() {
         By getSubmitWishlistLocator = By.id("submitWishlist");
         wait.until(ExpectedConditions.presenceOfElementLocated(getSubmitWishlistLocator));
         return driver.findElement(getSubmitWishlistLocator);
@@ -118,9 +118,6 @@ public class MyWishesPage {
 
 
     private WebElement createNewWishList(String wishListName) {
-        getWishlistField().sendKeys(wishListName);
-        getSubmitWishlistBtn().click();
-
         By wishListLocator = By.xpath("//tr");
         List<WebElement> listOfWishlist = driver.findElements(wishListLocator);
         for (WebElement wishList : listOfWishlist) {

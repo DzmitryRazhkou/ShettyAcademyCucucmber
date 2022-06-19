@@ -112,7 +112,7 @@ public class MyAddressesPageSteps {
 
     @When("User clicks on the back to your account button at the address page")
     public void user_clicks_on_the_back_to_your_account_button_at_the_address_page() {
-        System.out.println("User clicks at the back yo my account button. ");
+        System.out.println("User clicks at the back your my account button. ");
         accountPage = myAddressesPage.doClickBackToToYourAccount();
     }
 

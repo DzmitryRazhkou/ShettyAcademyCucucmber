@@ -16,6 +16,7 @@ public class MyWishesPageSteps {
 
     private Faker faker = new Faker();
     private int actAmountOfTopSellers;
+    private String nameWishListName;
 
     private MyAddressesPage myAddressesPage = new MyAddressesPage(DriverFactory.getWebDriver());
     private MyWishesPage myWishesPage = new MyWishesPage(DriverFactory.getWebDriver());
@@ -60,4 +61,42 @@ public class MyWishesPageSteps {
             Assert.assertTrue(myWishesPage.validateTopSellers(result));
         }
     }
+
+    @When("User enters wish list name")
+    public void user_enters_wish_list_name() {
+        nameWishListName = faker.company().name();
+        myWishesPage.getWishlistField().sendKeys(nameWishListName);
+    }
+
+    @When("User clicks at the save button")
+    public void user_clicks_at_the_save_button() {
+        myWishesPage.getSubmitWishlistBtn().click();
+    }
+
+    @Then("New wish list is created")
+    public void new_wish_list_is_created() {
+        String wishListID = myWishesPage.getId(nameWishListName);
+        Assert.assertTrue(myWishesPage.wishListExist(wishListID, nameWishListName));
+    }
+
+    @Then("User clicks on the cross delete icon")
+    public void user_clicks_on_the_cross_delete_icon() {
+        myWishesPage.getAlert();
+    }
+
+    @When("User clicks on the back to your account button at the my wishes page")
+    public void user_clicks_on_the_back_to_your_account_button_at_the_my_wishes_page() {
+        System.out.println("User clicks at the back your my account button. ");
+        accountPage = myWishesPage.doClickBackToToYourAccount();
+    }
+
+    @When("User clicks on the home button at the my wishes page")
+    public void user_clicks_on_the_home_button_at_the_my_wishes_page() {
+        System.out.println("User clicks at the home button. ");
+        myStorePage = myWishesPage.doClickHome();
+    }
+
+
+
+
 }

@@ -16,3 +16,19 @@ Feature: My Wishes Page
     And User gets top seller products
     Then Amount of the top seller products should be 7
     And Top seller products should contain "Printed Summer Dress Long printed dress with thin adjustable straps. V-neckline and wiring... $28.98"
+
+  Scenario: User creates new wish list
+    And User enters wish list name
+    And User clicks at the save button
+    Then New wish list is created
+
+  Scenario: User deletes existing wish list
+    Then User clicks on the cross delete icon
+
+  Scenario: User clicks on the back to your account button
+    And User clicks on the back to your account button at the my wishes page
+    Then Page title of my account page should be "My account - My Store"
+
+  Scenario: User clicks on the home button
+    And User clicks on the home button at the my wishes page
+    Then Page title of my store page should be "My Store"

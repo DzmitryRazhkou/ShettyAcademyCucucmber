@@ -8,6 +8,9 @@ Feature: My Order History Page
     And User clicks on the login button
     When User clicks on the order history and details section
 
-  Scenario: User navigates to my wishes page
-    And User navigates at the my wishes page title
+  Scenario: User navigates at the order history page
+    And User navigates at the order history page
     Then Page title of order history and details page should be "Order history - My Store"
+
+  Scenario: User want to get order reference
+    Then Order reference list contains "PTKIRUSQC"

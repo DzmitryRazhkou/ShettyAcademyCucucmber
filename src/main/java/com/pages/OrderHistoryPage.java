@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class OrderHistoryPage {
 
@@ -34,5 +35,28 @@ public class OrderHistoryPage {
             System.out.println(" ===> Please provide the correct locator. <===");
             return false;
         }
+    }
+
+//    VALIDATE PAGE TITLE:
+
+    public String getOrderHistoryPageTitle() {
+        System.out.println(" =====> Order history page title is: " + driver.getTitle() + " <===== ");
+        return driver.getTitle();
+    }
+
+//    ORDER REFERENCE:
+
+    public boolean getOrderReference(String orderReferenceName){
+        By orderReferenceLocator = By.cssSelector(".color-myaccount");
+        wait.until(ExpectedConditions.presenceOfElementLocated(orderReferenceLocator));
+
+        List<WebElement> orderReferenceList = driver.findElements(orderReferenceLocator);
+        for (WebElement s: orderReferenceList){
+            if (s.getText().trim().contains(orderReferenceName)){
+                System.out.println("Order reference list contains: " +orderReferenceName);
+                return true;
+            }
+        }
+        return false;
     }
 }

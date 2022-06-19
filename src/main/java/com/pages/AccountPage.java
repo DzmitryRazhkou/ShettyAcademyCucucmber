@@ -48,7 +48,22 @@ public class AccountPage {
         return accountList;
     }
 
-    //    My Credit Slips:
+//    Order History Page:
+
+    private WebElement getOrderHistoryLink(){
+        By orderHistoryLocator = By.cssSelector("[title^='Orders']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(orderHistoryLocator));
+        return driver.findElement(orderHistoryLocator);
+    }
+
+    public OrderHistoryPage clickOnOrderHistory(){
+        getOrderHistoryLink().click();
+        return new OrderHistoryPage(driver);
+    }
+
+
+
+//    My Credit Slips:
 
     private WebElement getMyCreditSlipsLink(){
         By myCreditSlipsLocator = By.cssSelector("[title^='Credit slips']");

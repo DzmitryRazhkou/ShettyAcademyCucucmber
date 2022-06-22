@@ -33,6 +33,25 @@ public class AccountPage {
         return driver.getTitle();
     }
 
+//    SEARCH HEADER:
+
+    public WebElement getSearchField(){
+        By searchFieldLocator = By.id("search_query_top");
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchFieldLocator));
+        return driver.findElement(searchFieldLocator);
+    }
+
+    private WebElement getSearchBtn(){
+        By searchBtnLocator = By.name("submit_search");
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchBtnLocator));
+        return driver.findElement(searchBtnLocator);
+    }
+
+    public SearchPage doClickOnSearchBtn(){
+        getSearchBtn().click();
+        return new SearchPage(driver);
+    }
+
     public int getAccountsSectionCount() {
         return driver.findElements(accountSections).size();
     }

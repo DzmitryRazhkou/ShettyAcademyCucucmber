@@ -21,3 +21,14 @@ Feature: Faded Short Sleeve T-Shirts Page
     And User enters the comment in the text field at the faded short sleeve t-shirts page
     And User clicks on the send review button at the faded short sleeve t-shirts page
     Then New review comment message should be "Your comment has been added and will be available once approved by a moderator"
+
+  Scenario: User wants to send to a friend
+    When User clicks on the send to friend button at the faded short sleeve t-shirts page
+    And User enters the name of the friend in the text field at the faded short sleeve t-shirts page
+    And User enters the email address of your friend in the text field at the faded short sleeve t-shirts page
+    And User clicks on the send email button at the faded short sleeve t-shirts page
+    Then New review email message should be "Your e-mail has been sent successfully"
+
+  Scenario: User wants to add to wish list
+    When User clicks on the add to wishlist button at the faded short sleeve t-shirts page
+    Then New wish list message should be "Added to your wishlist."

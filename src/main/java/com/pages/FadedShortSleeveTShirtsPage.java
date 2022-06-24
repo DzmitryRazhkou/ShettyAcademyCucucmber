@@ -77,7 +77,7 @@ public class FadedShortSleeveTShirtsPage {
         return driver.findElement(sendReviewBtnLocator);
     }
 
-    public String getMessageText(){
+    public String getReviewMessageText(){
         By newCommentLocator = By.cssSelector("div.fancybox-inner > p:nth-of-type(1)");
         wait.until(ExpectedConditions.presenceOfElementLocated(newCommentLocator));
         return driver.findElement(newCommentLocator).getText();
@@ -99,28 +99,34 @@ public class FadedShortSleeveTShirtsPage {
 
 //    SEND TO FRIEND:
 
-    private WebElement getSendToFriendBtn() {
+    public WebElement getSendToFriendBtn() {
         By sendToFriendBtnLocator = By.cssSelector("a#send_friend_button");
         wait.until(ExpectedConditions.presenceOfElementLocated(sendToFriendBtnLocator));
         return driver.findElement(sendToFriendBtnLocator);
     }
 
-    private WebElement getFriendNameField() {
+    public WebElement getFriendNameField() {
         By friendNameFieldLocator = By.cssSelector("input#friend_name");
         wait.until(ExpectedConditions.presenceOfElementLocated(friendNameFieldLocator));
         return driver.findElement(friendNameFieldLocator);
     }
 
-    private WebElement getFriendEmailField() {
+    public WebElement getFriendEmailField() {
         By friendEmailFieldLocator = By.cssSelector("input#friend_email");
         wait.until(ExpectedConditions.presenceOfElementLocated(friendEmailFieldLocator));
         return driver.findElement(friendEmailFieldLocator);
     }
 
-    private WebElement getSendEmailBtn() {
+    public WebElement getSendEmailBtn() {
         By sendEmailBtnLocator = By.cssSelector("button#sendEmail");
         wait.until(ExpectedConditions.presenceOfElementLocated(sendEmailBtnLocator));
         return driver.findElement(sendEmailBtnLocator);
+    }
+
+    public String getEmailMessageText(){
+        By newCommentLocator = By.cssSelector("div.fancybox-inner > p:nth-of-type(1)");
+        wait.until(ExpectedConditions.presenceOfElementLocated(newCommentLocator));
+        return driver.findElement(newCommentLocator).getText();
     }
 
     public boolean newEmailComment() {
@@ -137,21 +143,18 @@ public class FadedShortSleeveTShirtsPage {
         }
     }
 
-    public void doSendEmailFriend(String friendName, String friendEmail){
-        getSendToFriendBtn().click();
-        getFriendNameField().clear();
-        getFriendNameField().sendKeys(friendName);
-        getFriendEmailField().clear();
-        getFriendEmailField().sendKeys(friendEmail);
-        getSendEmailBtn().click();
-    }
-
 //    ADD TO WISH LIST:
 
     public void getAddToWishBtn() {
         By addToWishBtnLocator = By.cssSelector("a#wishlist_button");
         wait.until(ExpectedConditions.presenceOfElementLocated(addToWishBtnLocator));
         driver.findElement(addToWishBtnLocator).click();
+    }
+
+    public String getWishMessageText(){
+        By newCommentLocator = By.cssSelector("p.fancybox-error");
+        wait.until(ExpectedConditions.presenceOfElementLocated(newCommentLocator));
+        return driver.findElement(newCommentLocator).getText();
     }
 
     public boolean newAddToWish() {

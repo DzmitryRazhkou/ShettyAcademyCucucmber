@@ -68,9 +68,53 @@ public class FadedShortSleeveTShirtsPageSteps {
 
     @Then("New review comment message should be {string}")
     public void new_review_comment_message_should_be(String expMessage) {
-        String actMessage = fadedShortSleeveTShirtsPage.getMessageText();
+        String actMessage = fadedShortSleeveTShirtsPage.getReviewMessageText();
         Assert.assertEquals(expMessage, actMessage);
         Assert.assertTrue(fadedShortSleeveTShirtsPage.newReviewComment());
+    }
+
+    @When("User clicks on the send to friend button at the faded short sleeve t-shirts page")
+    public void user_clicks_on_the_send_to_friend_button_at_the_faded_short_sleeve_t_shirts_page() {
+        fadedShortSleeveTShirtsPage.getSendToFriendBtn().click();
+    }
+
+    @When("User enters the name of the friend in the text field at the faded short sleeve t-shirts page")
+    public void user_enters_the_name_of_the_friend_in_the_text_field_at_the_faded_short_sleeve_t_shirts_page() {
+        faker = new Faker();
+        String name = faker.name().fullName();
+        fadedShortSleeveTShirtsPage.getFriendNameField().clear();
+        fadedShortSleeveTShirtsPage.getFriendNameField().sendKeys(name);
+    }
+
+    @When("User enters the email address of your friend in the text field at the faded short sleeve t-shirts page")
+    public void user_enters_the_email_address_of_your_friend_in_the_text_field_at_the_faded_short_sleeve_t_shirts_page() {
+        faker = new Faker();
+        String email = faker.internet().emailAddress();
+        fadedShortSleeveTShirtsPage.getFriendEmailField().clear();
+        fadedShortSleeveTShirtsPage.getFriendEmailField().sendKeys(email);
+    }
+
+    @When("User clicks on the send email button at the faded short sleeve t-shirts page")
+    public void user_clicks_on_the_send_email_button_at_the_faded_short_sleeve_t_shirts_page() {
+        fadedShortSleeveTShirtsPage.getSendEmailBtn().click();
+    }
+
+    @Then("New review email message should be {string}")
+    public void new_review_email_message_should_be(String expMessage) {
+        String actMessage = fadedShortSleeveTShirtsPage.getEmailMessageText();
+        Assert.assertEquals(expMessage, actMessage);
+        Assert.assertTrue(fadedShortSleeveTShirtsPage.newEmailComment());
+    }
+
+    @When("User clicks on the add to wishlist button at the faded short sleeve t-shirts page")
+    public void user_clicks_on_the_add_to_wishlist_button_at_the_faded_short_sleeve_t_shirts_page() {
+        fadedShortSleeveTShirtsPage.getAddToWishBtn();
+    }
+    @Then("New wish list message should be {string}")
+    public void new_wish_list_message_should_be(String expMessage) {
+        String actMessage = fadedShortSleeveTShirtsPage.getWishMessageText();
+        Assert.assertEquals(expMessage, actMessage);
+        Assert.assertTrue(fadedShortSleeveTShirtsPage.newAddToWish());
     }
 
 }

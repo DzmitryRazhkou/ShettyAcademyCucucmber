@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -77,7 +79,7 @@ public class FadedShortSleeveTShirtsPage {
         return driver.findElement(sendReviewBtnLocator);
     }
 
-    public String getMessageText(){
+    public String getReviewMessageText(){
         By newCommentLocator = By.cssSelector("div.fancybox-inner > p:nth-of-type(1)");
         wait.until(ExpectedConditions.presenceOfElementLocated(newCommentLocator));
         return driver.findElement(newCommentLocator).getText();
@@ -99,28 +101,34 @@ public class FadedShortSleeveTShirtsPage {
 
 //    SEND TO FRIEND:
 
-    private WebElement getSendToFriendBtn() {
+    public WebElement getSendToFriendBtn() {
         By sendToFriendBtnLocator = By.cssSelector("a#send_friend_button");
         wait.until(ExpectedConditions.presenceOfElementLocated(sendToFriendBtnLocator));
         return driver.findElement(sendToFriendBtnLocator);
     }
 
-    private WebElement getFriendNameField() {
+    public WebElement getFriendNameField() {
         By friendNameFieldLocator = By.cssSelector("input#friend_name");
         wait.until(ExpectedConditions.presenceOfElementLocated(friendNameFieldLocator));
         return driver.findElement(friendNameFieldLocator);
     }
 
-    private WebElement getFriendEmailField() {
+    public WebElement getFriendEmailField() {
         By friendEmailFieldLocator = By.cssSelector("input#friend_email");
         wait.until(ExpectedConditions.presenceOfElementLocated(friendEmailFieldLocator));
         return driver.findElement(friendEmailFieldLocator);
     }
 
-    private WebElement getSendEmailBtn() {
+    public WebElement getSendEmailBtn() {
         By sendEmailBtnLocator = By.cssSelector("button#sendEmail");
         wait.until(ExpectedConditions.presenceOfElementLocated(sendEmailBtnLocator));
         return driver.findElement(sendEmailBtnLocator);
+    }
+
+    public String getEmailMessageText(){
+        By newCommentLocator = By.cssSelector("div.fancybox-inner > p:nth-of-type(1)");
+        wait.until(ExpectedConditions.presenceOfElementLocated(newCommentLocator));
+        return driver.findElement(newCommentLocator).getText();
     }
 
     public boolean newEmailComment() {
@@ -137,21 +145,18 @@ public class FadedShortSleeveTShirtsPage {
         }
     }
 
-    public void doSendEmailFriend(String friendName, String friendEmail){
-        getSendToFriendBtn().click();
-        getFriendNameField().clear();
-        getFriendNameField().sendKeys(friendName);
-        getFriendEmailField().clear();
-        getFriendEmailField().sendKeys(friendEmail);
-        getSendEmailBtn().click();
-    }
-
 //    ADD TO WISH LIST:
 
     public void getAddToWishBtn() {
         By addToWishBtnLocator = By.cssSelector("a#wishlist_button");
         wait.until(ExpectedConditions.presenceOfElementLocated(addToWishBtnLocator));
         driver.findElement(addToWishBtnLocator).click();
+    }
+
+    public String getWishMessageText(){
+        By newCommentLocator = By.cssSelector("p.fancybox-error");
+        wait.until(ExpectedConditions.presenceOfElementLocated(newCommentLocator));
+        return driver.findElement(newCommentLocator).getText();
     }
 
     public boolean newAddToWish() {
@@ -166,6 +171,59 @@ public class FadedShortSleeveTShirtsPage {
             System.out.println("Provide another locator");
             return false;
         }
+    }
+
+//    ADD TO CART:
+
+    public WebElement getQuantity() {
+        By quantityLocator = By.cssSelector("input#quantity_wanted");
+        wait.until(ExpectedConditions.presenceOfElementLocated(quantityLocator));
+        return driver.findElement(quantityLocator);
+    }
+
+    public WebElement getPlusBtn() {
+        By plusLocator = By.cssSelector("i.icon-plus");
+        wait.until(ExpectedConditions.presenceOfElementLocated(plusLocator));
+        return driver.findElement(plusLocator);
+    }
+
+    public WebElement getMinusBtn() {
+        By minusLocator = By.cssSelector("i.icon-minus");
+        wait.until(ExpectedConditions.presenceOfElementLocated(minusLocator));
+        return driver.findElement(minusLocator);
+    }
+
+    public void getSize(String index) {
+        By sizeLocator = By.cssSelector("select#group_1");
+        wait.until(ExpectedConditions.presenceOfElementLocated(sizeLocator));
+        WebElement size = driver.findElement(sizeLocator);
+
+        Select sel = new Select(size);
+        sel.selectByIndex(Integer.parseInt(index));
+    }
+
+    public WebElement getColor() {
+        By colorLocator = By.cssSelector("ul#color_to_pick_list>li:nth-of-type(1)");
+        wait.until(ExpectedConditions.presenceOfElementLocated(colorLocator));
+        return driver.findElement(colorLocator);
+    }
+
+    public void getAddToCartBtn() {
+        By addToCartBtnLocator = By.cssSelector("p#add_to_cart");
+        WebElement addToCart = driver.findElement(addToCartBtnLocator);
+        Actions act = new Actions(driver);
+        act.moveToElement(addToCart).click().build().perform();
+
+        By cartLayerLocator = By.cssSelector("div#layer_cart");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(cartLayerLocator));
+    }
+
+    public boolean getSuccessMessage() {
+        By successMessageLocator = By.xpath("//div[@class='layer_cart_product col-xs-12 col-md-6']/h2");
+        wait.until(ExpectedConditions.presenceOfElementLocated(successMessageLocator));
+        WebElement successMessage = driver.findElement(successMessageLocator);
+        System.out.println("Success message: " + successMessage.getText());
+        return successMessage.isDisplayed();
     }
 
 }

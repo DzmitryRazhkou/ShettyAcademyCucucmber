@@ -21,7 +21,7 @@ public class FadedShortSleeveTShirtsPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    //    VALIDATE BREADCRUMB:
+//    VALIDATE BREADCRUMB:
 
     private WebElement getFadedShortSleeveTShirt() {
         By fadedShortSleeveTShirtLocator = By.xpath("//div[@class='breadcrumb clearfix']");
@@ -224,6 +224,17 @@ public class FadedShortSleeveTShirtsPage {
         WebElement successMessage = driver.findElement(successMessageLocator);
         System.out.println("Success message: " + successMessage.getText());
         return successMessage.isDisplayed();
+    }
+
+    private WebElement getProceedToCheckOutBtn() {
+        By proceedToCheckOutBtnLocator = By.cssSelector("a[title='Proceed to checkout']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(proceedToCheckOutBtnLocator));
+        return driver.findElement(proceedToCheckOutBtnLocator);
+    }
+
+    public OrderPage proceedToOrderPage(){
+        getProceedToCheckOutBtn().click();
+        return new OrderPage(driver);
     }
 
 }

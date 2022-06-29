@@ -25,11 +25,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-                features = {"src/test/resources/com.features/FadedShortSleeveTShirtsPage.feature"},
+                features = {"src/test/resources/com.features/OrderPage.feature"},
 //        tags = "@Smoke",
         glue = {"stepdefinitions", "AppHooks"},
 //        monochrome = true,
-        dryRun = true,
+        dryRun = false,
         plugin = {"pretty",
         }
 )

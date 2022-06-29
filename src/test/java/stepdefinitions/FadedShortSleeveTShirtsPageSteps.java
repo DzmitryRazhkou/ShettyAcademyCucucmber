@@ -20,7 +20,7 @@ public class FadedShortSleeveTShirtsPageSteps {
 
     @When("User clicks on the showed product at the account page")
     public void user_clicks_on_the_showed_product_at_the_account_page() {
-        System.out.println("User clcicks on the product");
+        System.out.println("User clicks on the product");
         fadedShortSleeveTShirtsPage = searchPage.clickOnMore();
     }
 

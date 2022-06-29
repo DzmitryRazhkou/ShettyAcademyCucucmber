@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 //        tags = "@Smoke",
         glue = {"stepdefinitions", "AppHooks"},
 //        monochrome = true,
-        dryRun = false,
+        dryRun = true,
         plugin = {"pretty",
         }
 )

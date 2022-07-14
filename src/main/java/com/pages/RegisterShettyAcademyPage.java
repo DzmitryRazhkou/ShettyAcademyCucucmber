@@ -69,13 +69,13 @@ public class RegisterShettyAcademyPage {
 
 //    LOG IN:
 
-    private WebElement emailField() {
+    public WebElement emailField() {
         By emailFieldLocator = By.id("userEmail");
         wait.until(ExpectedConditions.visibilityOfElementLocated(emailFieldLocator));
         return driver.findElement(emailFieldLocator);
     }
 
-    private WebElement passwordField() {
+    public WebElement passwordField() {
         By passwordFieldLocator = By.id("userPassword");
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordFieldLocator));
         return driver.findElement(passwordFieldLocator);
@@ -87,11 +87,27 @@ public class RegisterShettyAcademyPage {
         return driver.findElement(loginFieldLocator);
     }
 
-    public ProductShettyAcademyPage doLogin(String email, String password) {
-        emailField().sendKeys(email);
-        passwordField().sendKeys(password);
+    public ProductShettyAcademyPage clickOnLoginBtn() {
         loginField().click();
         return new ProductShettyAcademyPage(driver);
+    }
+
+//    INCORRECT CREDENTIALS
+
+    private WebElement getIncorrectCredentialsRedConfirmationMessage() {
+        By getIncorrectCredentialsRedConfirmationMessageLocator = By.cssSelector("div[role='alertdialog']");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(getIncorrectCredentialsRedConfirmationMessageLocator));
+        return driver.findElement(getIncorrectCredentialsRedConfirmationMessageLocator);
+    }
+
+    public boolean validateIncorrectCredentialsRedConfirmation() {
+        try {
+            System.out.println("=====> Incorrect credentials confirmation message is: " + getIncorrectCredentialsRedConfirmationMessage().getText() + " <=====");
+            return getIncorrectCredentialsRedConfirmationMessage().isDisplayed();
+        } catch (TimeoutException y) {
+            System.out.println(" ===> Please provide the correct locator. <===");
+            return false;
+        }
     }
 
 //    VALIDATE LOGIN OUT CONFIRMATION MESSAGE:
@@ -249,24 +265,6 @@ public class RegisterShettyAcademyPage {
             return successMessage().isDisplayed();
         } catch (TimeoutException y) {
             System.out.println(" =====> Please provide the correct locator. <=====");
-            return false;
-        }
-    }
-
-//    INCORRECT CREDENTIALS
-
-    private WebElement getIncorrectCredentialsRedConfirmationMessage() {
-        By getIncorrectCredentialsRedConfirmationMessageLocator = By.cssSelector("div[role='alertdialog']");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(getIncorrectCredentialsRedConfirmationMessageLocator));
-        return driver.findElement(getIncorrectCredentialsRedConfirmationMessageLocator);
-    }
-
-    public boolean validateIncorrectCredentialsRedConfirmation() {
-        try {
-            System.out.println("=====> Incorrect credentials confirmation message is: " + getIncorrectCredentialsRedConfirmationMessage().getText() + " <=====");
-            return getIncorrectCredentialsRedConfirmationMessage().isDisplayed();
-        } catch (TimeoutException y) {
-            System.out.println(" ===> Please provide the correct locator. <===");
             return false;
         }
     }

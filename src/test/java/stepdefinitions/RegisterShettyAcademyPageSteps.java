@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import com.pages.ProductShettyAcademyPage;
 import com.pages.RegisterShettyAcademyPage;
 import com.qa.factory.DriverFactory;
 import com.qa.util.ConfigReader;
@@ -11,6 +12,7 @@ import org.junit.Assert;
 public class RegisterShettyAcademyPageSteps {
 
     RegisterShettyAcademyPage registerShettyAcademyPage = new RegisterShettyAcademyPage(DriverFactory.getWebDriver());
+    ProductShettyAcademyPage productShettyAcademyPage = new ProductShettyAcademyPage(DriverFactory.getWebDriver());
 
     @Given("User navigates at the register Shetty page")
     public void user_navigates_at_the_register_shetty_page() {
@@ -45,5 +47,34 @@ public class RegisterShettyAcademyPageSteps {
         String actEmailAddress = registerShettyAcademyPage.shettyAcademyEmail();
         Assert.assertEquals(expEmailAddress, actEmailAddress);
     }
+
+//    Login with correct credentials
+
+    @When("User enters an email address into the email field on the register Shetty page {string}")
+    public void user_enters_an_email_address_into_the_email_field_on_the_register_shetty_page(String email) {
+        registerShettyAcademyPage.emailField().sendKeys(email);
+    }
+
+    @When("User enters a password into the password field on the register Shetty page {string}")
+    public void user_enters_a_password_into_the_password_field_on_the_register_shetty_page(String password) {
+        registerShettyAcademyPage.passwordField().sendKeys(password);
+    }
+
+    @When("User clicks on the login button on the register Shetty page")
+    public void user_clicks_on_the_login_button_on_the_register_shetty_page() {
+        productShettyAcademyPage = registerShettyAcademyPage.clickOnLoginBtn();
+    }
+    @Then("User navigates at the product Shetty page")
+    public void user_navigates_at_the_product_shetty_page() {
+        productShettyAcademyPage.validateGetLogInGreenConfirmationMessage();
+    }
+
+    @Then("Confirm success login pop up message should be {string}")
+    public void confirm_success_login_pop_up_message_should_be(String expConfirmSuccessLoginPopUpMessage) {
+        String actConfirmSuccessLoginPopUpMessage = productShettyAcademyPage.validateGetLogInGreenConfirmationMessageText();
+        Assert.assertEquals(expConfirmSuccessLoginPopUpMessage, actConfirmSuccessLoginPopUpMessage);
+    }
+
+
 
 }

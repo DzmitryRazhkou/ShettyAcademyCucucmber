@@ -34,6 +34,16 @@ public class ProductShettyAcademyPage {
         }
     }
 
+    public String validateGetLogInGreenConfirmationMessageText() {
+        try {
+            System.out.println("=====> Confirmation message text is: " + getLoginGreenConfirmationMessage().getText() + " <=====");
+            return getLoginGreenConfirmationMessage().getText();
+        } catch (TimeoutException y) {
+            System.out.println(" ===> Please provide the correct locator. <===");
+            return null;
+        }
+    }
+
 //    VALIDATE PAGE TITLE:
 
     public String getProductPageTitle() {

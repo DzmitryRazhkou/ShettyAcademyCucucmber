@@ -31,6 +31,7 @@ import org.junit.runner.RunWith;
 //        monochrome = true,
         dryRun = false,
         plugin = {"pretty",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
         }
 )
 

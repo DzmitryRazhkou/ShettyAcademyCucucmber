@@ -1,0 +1,19 @@
+Feature: Register Shetty Academy Page Feature
+
+  Background:
+    Given User navigates at the register Shetty page
+    When User is on the register Shetty page
+
+  Scenario: User validates login form and page title
+    Then The login form should be displayed
+    And Register Shetty title page should be "Let's Shop"
+
+  Scenario: User validates social media links
+    Then Social media amounts should be 4
+
+  Scenario: User validates academy's an email address
+    Then The academy's email address should be "dummywebsite@rahulshettyacademy.com"
+
+
+
+

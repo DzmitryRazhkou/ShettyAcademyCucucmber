@@ -110,6 +110,16 @@ public class RegisterShettyAcademyPage {
         }
     }
 
+    public String validateIncorrectCredentialsRedConfirmationText() {
+        try {
+            System.out.println("=====> Confirmation message text is: " + getIncorrectCredentialsRedConfirmationMessage().getText() + " <=====");
+            return getIncorrectCredentialsRedConfirmationMessage().getText();
+        } catch (TimeoutException y) {
+            System.out.println(" ===> Please provide the correct locator. <===");
+            return null;
+        }
+    }
+
 //    VALIDATE LOGIN OUT CONFIRMATION MESSAGE:
 
     private WebElement getLogOutGreenConfirmationMessage() {

@@ -66,7 +66,7 @@ public class RegisterShettyAcademyPageSteps {
     }
     @Then("User navigates at the product Shetty page")
     public void user_navigates_at_the_product_shetty_page() {
-        productShettyAcademyPage.validateGetLogInGreenConfirmationMessage();
+        Assert.assertTrue(productShettyAcademyPage.validateGetLogInGreenConfirmationMessage());
     }
 
     @Then("Confirm success login pop up message should be {string}")
@@ -75,6 +75,26 @@ public class RegisterShettyAcademyPageSteps {
         Assert.assertEquals(expConfirmSuccessLoginPopUpMessage, actConfirmSuccessLoginPopUpMessage);
     }
 
+//    Login with incorrect credentials:
 
+    @When("User enters an wrong email address into the email field on the register Shetty page {string}")
+    public void user_enters_an_wrong_email_address_into_the_email_field_on_the_register_shetty_page(String wrong_email) {
+        registerShettyAcademyPage.emailField().sendKeys(wrong_email);
+    }
 
+    @When("User enters a wrong password into the password field on the register Shetty page {string}")
+    public void user_enters_a_wrong_password_into_the_password_field_on_the_register_shetty_page(String wrong_password) {
+        registerShettyAcademyPage.passwordField().sendKeys(wrong_password);
+    }
+
+    @Then("User stays at the register Shetty page")
+    public void user_stays_at_the_register_shetty_page() {
+        Assert.assertTrue(registerShettyAcademyPage.validateIncorrectCredentialsRedConfirmation());
+    }
+
+    @Then("Incorrect email or password pop up message should be {string}")
+    public void incorrect_email_or_password_pop_up_message_should_be(String expIncorrectPasswordOrEmailPopUpMessage) {
+        String actIncorrectPasswordOrEmailPopUpMessage = registerShettyAcademyPage.validateIncorrectCredentialsRedConfirmationText();
+        Assert.assertEquals(expIncorrectPasswordOrEmailPopUpMessage, actIncorrectPasswordOrEmailPopUpMessage);
+    }
 }

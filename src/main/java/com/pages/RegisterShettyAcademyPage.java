@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 
 public class RegisterShettyAcademyPage {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
     public RegisterShettyAcademyPage(WebDriver driver) {
         this.driver = driver;
@@ -140,37 +140,37 @@ public class RegisterShettyAcademyPage {
 
 //    REGISTER:
 
-    private WebElement getRegisterBtn() {
+    public WebElement getRegisterBtn() {
         By registerBtnLocator = By.cssSelector("a.btn1");
         wait.until(ExpectedConditions.visibilityOfElementLocated(registerBtnLocator));
         return driver.findElement(registerBtnLocator);
     }
 
-    private WebElement firstNameField() {
+    public WebElement firstNameField() {
         By firstnameFieldLocator = By.id("firstName");
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstnameFieldLocator));
         return driver.findElement(firstnameFieldLocator);
     }
 
-    private WebElement lastNameField() {
+    public WebElement lastNameField() {
         By lastNameFieldLocator = By.id("lastName");
         wait.until(ExpectedConditions.visibilityOfElementLocated(lastNameFieldLocator));
         return driver.findElement(lastNameFieldLocator);
     }
 
-    private WebElement emailUserField() {
+    public WebElement emailUserField() {
         By emailUserLocator = By.id("userEmail");
         wait.until(ExpectedConditions.visibilityOfElementLocated(emailUserLocator));
         return driver.findElement(emailUserLocator);
     }
 
-    private WebElement getUserMobileField() {
+    public WebElement getUserMobileField() {
         By userMobileLocator = By.id("userMobile");
         wait.until(ExpectedConditions.visibilityOfElementLocated(userMobileLocator));
         return driver.findElement(userMobileLocator);
     }
 
-    private void getOccupation(String occupation) {
+    public void getOccupation(String occupation) {
         By occupationLocator = By.cssSelector("select[formcontrolname='occupation'] option");
         wait.until(ExpectedConditions.visibilityOfElementLocated(occupationLocator));
 
@@ -184,31 +184,31 @@ public class RegisterShettyAcademyPage {
         }
     }
 
-    private WebElement getGender(){
+    public WebElement getGender(){
         By getGenderLocator = By.cssSelector("input[value='Male']");
         wait.until(ExpectedConditions.visibilityOfElementLocated(getGenderLocator));
         return driver.findElement(getGenderLocator);
     }
 
-    private WebElement getUserPassword() {
+    public WebElement getUserPassword() {
         By userPasswordLocator = By.id("userPassword");
         wait.until(ExpectedConditions.visibilityOfElementLocated(userPasswordLocator));
         return driver.findElement(userPasswordLocator);
     }
 
-    private WebElement getConfirmUserPassword() {
+    public WebElement getConfirmUserPassword() {
         By confirmedUserPasswordLocator = By.id("confirmPassword");
         wait.until(ExpectedConditions.visibilityOfElementLocated(confirmedUserPasswordLocator));
         return driver.findElement(confirmedUserPasswordLocator);
     }
 
-    private WebElement getCheckBox() {
+    public WebElement getCheckBox() {
         By getCheckBoxLocator = By.cssSelector("input[type='checkbox']");
         wait.until(ExpectedConditions.visibilityOfElementLocated(getCheckBoxLocator));
         return driver.findElement(getCheckBoxLocator);
     }
 
-    private WebElement getLoginBtn() {
+    public WebElement getLoginBtn() {
         By loginBtnLocator = By.id("login");
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginBtnLocator));
         return driver.findElement(loginBtnLocator);
@@ -218,7 +218,7 @@ public class RegisterShettyAcademyPage {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@!#$%&";
         String password = RandomStringUtils.random( 8, characters );
 
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%&])(?=\\S+$).{8,}$";
+        String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%&])(?=\\S+$).{8,}$";
         Pattern pattern = Pattern.compile( regex );
         Matcher matcher = pattern.matcher( password );
 
@@ -229,38 +229,6 @@ public class RegisterShettyAcademyPage {
         }
     }
 
-
-
-    public void doRegistration(String firstName, String lastName, String email, String phoneNumber, String occupation, String password) {
-        getRegisterBtn().click();
-
-        firstNameField().clear();
-        firstNameField().sendKeys(firstName);
-
-        lastNameField().clear();
-        lastNameField().sendKeys(lastName);
-
-        emailUserField().clear();
-        emailUserField().sendKeys(email);
-
-        getUserMobileField().clear();
-        getUserMobileField().sendKeys(phoneNumber);
-
-        getOccupation(occupation);
-
-        getGender().click();
-
-        getUserPassword().clear();
-        getUserPassword().sendKeys(password);
-
-        getConfirmUserPassword().clear();
-        getConfirmUserPassword().sendKeys(password);
-
-        getCheckBox().click();
-
-        getLoginBtn().click();
-    }
-
 //    PROVE OF THE SUCCESSFUL REGISTRATION:
 
     private WebElement successMessage() {
@@ -269,13 +237,13 @@ public class RegisterShettyAcademyPage {
         return driver.findElement(successMessageLocator);
     }
 
-    public boolean validateSuccessRegistration() {
+    public String validateSuccessRegistrationText() {
         try {
             System.out.println(" ====> "+ successMessage().getText()+ " <==== ");
-            return successMessage().isDisplayed();
+            return successMessage().getText();
         } catch (TimeoutException y) {
             System.out.println(" =====> Please provide the correct locator. <=====");
-            return false;
+            return null;
         }
     }
 

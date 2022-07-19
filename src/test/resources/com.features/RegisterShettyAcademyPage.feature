@@ -22,7 +22,6 @@ Feature: Register Shetty Academy Page Feature
     Then User navigates at the product Shetty page
     And Confirm success login pop up message should be "Login Successfully"
 
-  @Smoke
   Scenario: Login with incorrect credentials
     And User enters an wrong email address into the email field on the register Shetty page "dimagadjilla_@gmail.com"
     And User enters a wrong password into the password field on the register Shetty page "3036057_Dr"
@@ -30,4 +29,18 @@ Feature: Register Shetty Academy Page Feature
     Then User stays at the register Shetty page
     And Incorrect email or password pop up message should be "Incorrect email or password."
 
+  @Smoke
+  Scenario: User want to register
+    And User clicks on the register button on the register Shetty page
+    And User enters a first name for registration on the register Shetty page
+    And User enters a last name for registration on the register Shetty page
+    And User enters a email address name for registration on the register Shetty page
+    And User enters a phone number for registration on the register Shetty page
+    And User selects an occupation from drop down menu on the register Shetty page "Engineer"
+    And User selects a gender on the register Shetty page
+    And User enters a password for registration on the register Shetty page
+    And User enters a confirm password for registration on the register Shetty page
+    And User confirms that under eighteen on the register Shetty page
+    Then User clicks on the login button for registration on the register Shetty page
+    And Confirm success registration pop up message should be "Account Created Successfully"
 

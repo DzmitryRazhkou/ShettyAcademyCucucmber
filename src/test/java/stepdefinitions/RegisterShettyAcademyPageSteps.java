@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import com.github.javafaker.Faker;
 import com.pages.ProductShettyAcademyPage;
 import com.pages.RegisterShettyAcademyPage;
 import com.qa.factory.DriverFactory;
@@ -13,6 +14,7 @@ public class RegisterShettyAcademyPageSteps {
 
     RegisterShettyAcademyPage registerShettyAcademyPage = new RegisterShettyAcademyPage(DriverFactory.getWebDriver());
     ProductShettyAcademyPage productShettyAcademyPage = new ProductShettyAcademyPage(DriverFactory.getWebDriver());
+    Faker faker = new Faker();
 
     @Given("User navigates at the register Shetty page")
     public void user_navigates_at_the_register_shetty_page() {
@@ -96,5 +98,73 @@ public class RegisterShettyAcademyPageSteps {
     public void incorrect_email_or_password_pop_up_message_should_be(String expIncorrectPasswordOrEmailPopUpMessage) {
         String actIncorrectPasswordOrEmailPopUpMessage = registerShettyAcademyPage.validateIncorrectCredentialsRedConfirmationText();
         Assert.assertEquals(expIncorrectPasswordOrEmailPopUpMessage, actIncorrectPasswordOrEmailPopUpMessage);
+    }
+
+//    Registration:
+
+    String firstName = faker.name().firstName();
+    String lastName = faker.name().lastName();
+    String email = faker.internet().emailAddress();
+    String phone = faker.numerify("1#########");
+    String password = registerShettyAcademyPage.generatePassword();
+
+    @When("User clicks on the register button on the register Shetty page")
+    public void user_clicks_on_the_register_button_on_the_register_shetty_page() {
+        registerShettyAcademyPage.getRegisterBtn().click();
+    }
+
+    @When("User enters a first name for registration on the register Shetty page")
+    public void user_enters_a_first_name_for_registration_on_the_register_shetty_page() {
+        registerShettyAcademyPage.firstNameField().sendKeys(firstName);
+    }
+
+    @When("User enters a last name for registration on the register Shetty page")
+    public void user_enters_a_last_name_for_registration_on_the_register_shetty_page() {
+        registerShettyAcademyPage.lastNameField().sendKeys(lastName);
+    }
+
+    @When("User enters a email address name for registration on the register Shetty page")
+    public void user_enters_a_email_address_name_for_registration_on_the_register_shetty_page() {
+        registerShettyAcademyPage.emailUserField().sendKeys(email);
+    }
+
+    @When("User enters a phone number for registration on the register Shetty page")
+    public void user_enters_a_phone_number_for_registration_on_the_register_shetty_page() {
+        registerShettyAcademyPage.getUserMobileField().sendKeys(phone);
+    }
+
+    @When("User selects an occupation from drop down menu on the register Shetty page {string}")
+    public void user_selects_an_occupation_from_drop_down_menu_on_the_register_shetty_page(String occupation) {
+        registerShettyAcademyPage.getOccupation(occupation);
+    }
+
+    @When("User selects a gender on the register Shetty page")
+    public void user_selects_a_gender_on_the_register_shetty_page() {
+        registerShettyAcademyPage.getGender().click();
+    }
+
+    @When("User enters a password for registration on the register Shetty page")
+    public void user_enters_a_password_for_registration_on_the_register_shetty_page() {
+        registerShettyAcademyPage.getUserPassword().sendKeys(password);
+    }
+
+    @When("User enters a confirm password for registration on the register Shetty page")
+    public void user_enters_a_confirm_password_for_registration_on_the_register_shetty_page() {
+        registerShettyAcademyPage.getConfirmUserPassword().sendKeys(password);
+    }
+
+    @When("User confirms that under eighteen on the register Shetty page")
+    public void user_confirms_that_under_on_the_register_shetty_page() {
+        registerShettyAcademyPage.getCheckBox().click();
+    }
+
+    @Then("User clicks on the login button for registration on the register Shetty page")
+    public void user_clicks_on_the_login_button_for_registration_on_the_register_shetty_page() {
+        registerShettyAcademyPage.getLoginBtn().click();
+    }
+
+    @Then("Confirm success registration pop up message should be {string}")
+    public void confirm_success_registration_pop_up_message_should_be(String expSuccessRegistrationPopUpMessage) {
+        Assert.assertEquals(registerShettyAcademyPage.validateSuccessRegistrationText(), expSuccessRegistrationPopUpMessage);
     }
 }

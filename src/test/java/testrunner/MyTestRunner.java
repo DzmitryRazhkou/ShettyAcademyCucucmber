@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-                features = {"src/test/resources/com.features/RegisterShettyAcademyPage.feature"},
+                features = {"src/test/resources/com.features/ProductShettyAcademyPage.feature"},
 //        tags = "@F",
         glue = {"stepdefinitions", "AppHooks"},
 //        monochrome = true,

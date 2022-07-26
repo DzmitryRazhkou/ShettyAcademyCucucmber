@@ -111,7 +111,7 @@ public class ProductShettyAcademyPage {
 
     private WebElement getAddToCart() {
         By getViewButtonLocator = By.cssSelector("button[routerlink='/dashboard/cart']");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(getViewButtonLocator));
+        wait.until(ExpectedConditions.elementToBeClickable(getViewButtonLocator));
         return driver.findElement(getViewButtonLocator);
     }
 
@@ -131,8 +131,9 @@ public class ProductShettyAcademyPage {
         }
     }
 
-    public void doAddToCart() {
+    public void doAddToCart() throws InterruptedException {
         getViewButton().click();
+        Thread.sleep(1500);
         getAddToCart().click();
     }
 

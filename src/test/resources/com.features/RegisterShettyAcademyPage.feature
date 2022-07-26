@@ -14,7 +14,6 @@ Feature: Register Shetty Academy Page Feature
   Scenario: User validates academy's an email address
     Then The academy's email address should be "dummywebsite@rahulshettyacademy.com"
 
-  @F
   Scenario: Login with correct credentials
     And User enters an email address into the email field on the register Shetty page "dimagadjilla@gmail.com"
     And User enters a password into the password field on the register Shetty page "3036057Dr"
@@ -29,7 +28,6 @@ Feature: Register Shetty Academy Page Feature
     Then User stays at the register Shetty page
     And Incorrect email or password pop up message should be "Incorrect email or password."
 
-  @Smoke
   Scenario: User want to register
     And User clicks on the register button on the register Shetty page
     And User enters a first name for registration on the register Shetty page
